@@ -15,6 +15,8 @@ function computerSelection() {       //Randomly chooses Rock, Paper or Scissors.
             let player = prompt("Choose Rock, Paper, or Scissors. ");
             return player.charAt(0).toUpperCase() + player.slice(1);
 }
+    let compScore = [0];
+    let playerScore = [0];
 function gamePlay() {       // Decides if the Computer or Player wins.
     let winner = "";
     let player = playerSelection();
@@ -26,22 +28,34 @@ function gamePlay() {       // Decides if the Computer or Player wins.
    } else if (computer == "Scissors" && player == "Scissors") {
        return winner = "Draw!";
    } else if (computer == "Rock" && player == "Scissors") {
-       return winner = "Computer wins! Rock beats Scissors!";
+       return compScore++, winner = "Computer wins! Rock beats Scissors!";
    } else if (computer == "Paper" && player == "Rock") {
-       return winner = "Computer wins! Paper beats Rock!";
+       return compScore++, winner = "Computer wins! Paper beats Rock!";
    } else if (computer == "Scissors" && player == "Paper") {
-       return winner = "Computer wins! Scissors beat Paper!";
+       return compScore++, winner = "Computer wins! Scissors beat Paper!";
    } else if (computer == "Rock" && player == "Paper")  {
-       return winner = "You win! Paper beats Rock!";
+       return playerScore++, winner = "You win! Paper beats Rock!";
    } else if (computer == "Paper" && player == "Scissors") {
-       return winner = "You win! Scissors beats Paper!";
+       return playerScore++, winner = "You win! Scissors beats Paper!";
    } else if (computer == "Scissors" && player == "Rock") {
-       return winner = "You win! Rock beats Paper!";
+       return playerScore++, winner = "You win! Rock beats Paper!";
    } else { return winner = "Somthing went wrong."}
 }
 let count = 0
 for (count = 0; count < 5; count++) {
 console.log(gamePlay()); }
+    
+function score() { // Determines who has the higher score.
+        let tally = ''
+        if (compScore > playerScore) {
+            return tally = "The computer won the game!";
+        } else if (playerScore > compScore) {
+            return tally = "You won the game!";
+        } else { return tally = "Draw!";
+    }
+    }
+console.log("You won " + playerScore + " rounds. " + "The computer won " + compScore + " rounds.");
+console.log(score());
 //************************************************************************************************************************
         </script>
     </body>
