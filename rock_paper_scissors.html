@@ -1,4 +1,8 @@
+<!DOCTYPE html>
 <html>
+    <head>
+        <link rel="stylesheet" href="rock_paper_scissors.css">
+    </head>
     <header>
         <title>Rock Paper Scissors</title>
         <meta charset="utf-8"/>
@@ -10,105 +14,12 @@
             <button id="scissors">Scissors</button>
         </div>
        
-        <div id="choices"></div>
-        <div id="outcome"></div>
-        <div id="score"></div>
        
        <script>
 //*****************************************************************************
 
 
-const buttons = document.querySelectorAll('button');
-        buttons.forEach((button) => {
-            button.addEventListener('click', () => {
-                let computerScore = 0;
-                let playerScore = 0;
-                let player = button.id; // Enters the players choice.
-                let game = [ "rock", "paper", "scissors"]; // array of choices.
-                let randomIndex = Math.floor(Math.random() * game.length); // Chooses a random string from the game array.
-                    let computer = game[randomIndex]; // Assigns the random string to the computers choice.
-                
-                const container =  document.querySelector('#choices'); // Displays the player's choice.
-                const playerChoice = document.createElement('div');
-                playerChoice.classList.add('playerChoice');
-                playerChoice.textContent = "You chose: " + player;
-                container.appendChild(playerChoice);
 
-                const computerChoice = document.createElement('div'); // Displays the computer's choice
-                computerChoice.classList.add('computerChoice');
-                computerChoice.textContent = "The computer chose: " + computer;
-                container.appendChild(computerChoice);
-
-
-                console.log("Player chose " + player);
-                console.log("Computer chose " + computer);
-                
-                //Determines who wins the round.
-                function playervsComputer () { if ((player === "rock") && (computer === "rock")) {
-                    return "Draw!";
-                } else if ((player === "paper") && (computer === "paper")) {
-                    return "Draw!"; 
-                } else if ((player === "scissors") && (computer === "scissors")) {
-                    return "Draw!";
-                } else if ((player === "rock") && (computer === "paper")) {
-                   return "computer";
-                } else if ((player === "rock") && (computer === "scissors")) {
-                    return "player";
-                } else if ((player === "paper") && (computer === "scissors")) {
-                    return "computer";
-                } else if ((player === "paper") && (computer === "rock")) {
-                    return "player";
-                } else if ((player === "scissors") && (computer === "paper")) {
-                    return "player";
-                } else if ((player === "scissors") && (computer === "rock")) {
-                    return "computer";
-                } else { return "Error!";}
-            }
-               
-                
-                let winner = playervsComputer();
-                if (winner = "player") {
-                    playerScore = playerScore++;
-                } else if (winner = "computer") {
-                    computerScore = computerScore++;
-                }
-
-
-                if (winner === "player") {
-                    let outcome = document.createElement('div');
-                    outcome.classList.add('outcome');
-                    outcome.textContent = "You win!";
-                    container.appendChild(outcome);
-                }  else if (winner === "computer") {
-                    let outcome = document.createElement('div');
-                    outcome.classList.add('outcome');
-                    outcome.textContent = "The Computer wins!";
-                    container.appendChild(outcome);
-                } else { 
-                    let outcome = document.createElement('div');
-                    outcome.classList.add('outcome');
-                    outcome.textContent = "Draw!";
-                    container.appendChild(outcome); }
-                
-                console.log("The current score is Player: " + playerScore +  " Computer: " + computerScore);
-                const score = document.createElement('div');
-                score.classList.add('score');
-                score.textContent = "The current score is Player: " + playerScore +  " Computer: " + computerScore;
-                container.appendChild(score);
-
-
-               /* const outcome = document.createElement('div');
-                outcome.classList.add('outcome');
-                outcome.textContent = score;
-                container.appendChild(outcome);
-                
-                console.log("Your Score: " + playerScore + " Computer's Score: " + computerScore );
-                if (playerScore === 5) {
-                    console.log("You won the game!"), playerScore = 0,  computerScore = 0;
-                } else if (computerScore === 5) {console.log("The computer won the game!"), playerScore = 0,  computerScore = 0;
-           } else {console.log("Next round!")} */ 
-        });
-    });
 
     
 
