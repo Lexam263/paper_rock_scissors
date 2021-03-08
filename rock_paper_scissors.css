@@ -3,4 +3,68 @@ body {
     background-size: auto;
     background-repeat: repeat-y;
     font-family: 'Courier New', Courier, monospace;
+    color: black;
+}
+
+.title {
+    color: #ffffff;
+    text-align: center;
+    font-size: 90px;
+    font-weight: bold;
+    font-family: monospace;
+    text-shadow: black 0 20px 30px;
+    margin-top: 50px;
+}
+
+.subtitle {
+    color: #ffffff;
+    text-align: center;
+    font-size: 60px;
+    font-weight: bold;
+    font-family: monospace;
+    text-shadow: black 0 20px 30px;
+    margin-top: 50px;
+}
+
+.rules {
+    color: #ffffff;
+    text-align: center;
+    font-size: 35px;
+    font-weight: bold;
+    font-family: monospace;
+    text-shadow: black 0 20px 30px;
+}
+
+
+
+.btn {
+    background-color: rgb(21, 24, 212);
+    border: none;
+    border-radius: 20px;
+    box-shadow: black 0 20px 30px;
+    padding: 20px;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    margin-left: 30px;
+    margin-top: 25px;
+}
+.btn:hover {
+    transition: 500ms;
+    background-color: gold;
+    color: black;
+}
+.btns {
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+}
+
+.playerChoice {
+    color: #ffffff;
+    text-align: justify;
+    font-size: 35px;
+    font-weight: bold;
+    font-family: monospace;
+    text-shadow: black 0 20px 30px;
 }

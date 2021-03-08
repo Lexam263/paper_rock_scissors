@@ -1,0 +1,48 @@
+<html>
+    <header>
+        <title>Paper Rock Scissors</title>
+        <meta charset="UTF-8"/>
+    </header>
+    <body>
+        <script>
+//*****************************************************************************
+
+function computerSelection() {       //Randomly chooses Rock, Paper or Scissors.
+            let rps = ["Rock", "Paper", "Scissors"]
+            return rps[Math.floor(Math.random() * rps.length)];
+}
+        function playerSelection() {        //Player chooses Rock, Paper or Scissors.
+            let player = prompt("Choose Rock, Paper, or Scissors. ");
+            return player.charAt(0).toUpperCase() + player.slice(1);
+}
+function gamePlay() {       // Decides if the Computer or Player wins.
+    let winner = "";
+    let player = playerSelection();
+    let computer = computerSelection();
+   if (computer == "Rock" && player == "Rock") { 
+       return winner = "Draw!";
+   } else if (computer == "Paper" && player == "Paper") {
+       return winner = "Draw!";
+   } else if (computer == "Scissors" && player == "Scissors") {
+       return winner = "Draw!";
+   } else if (computer == "Rock" && player == "Scissors") {
+       return winner = "Computer wins! Rock beats Scissors!";
+   } else if (computer == "Paper" && player == "Rock") {
+       return winner = "Computer wins! Paper beats Rock!";
+   } else if (computer == "Scissors" && player == "Paper") {
+       return winner = "Computer wins! Scissors beat Paper!";
+   } else if (computer == "Rock" && player == "Paper")  {
+       return winner = "You win! Paper beats Rock!";
+   } else if (computer == "Paper" && player == "Scissors") {
+       return winner = "You win! Scissors beats Paper!";
+   } else if (computer == "Scissors" && player == "Rock") {
+       return winner = "You win! Rock beats Paper!";
+   } else { return winner = "Somthing went wrong."}
+}
+let count = 0
+for (count = 0; count < 5; count++) {
+console.log(gamePlay()); }
+//*****************************************************************************
+        </script>
+    </body>
+</html>

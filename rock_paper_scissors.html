@@ -8,20 +8,289 @@
         <meta charset="utf-8"/>
     </header>
     <body>
-        <div id="buttons">
-            <button id="rock">Rock</button>
-            <button id="paper">Paper</button>
-            <button id="scissors">Scissors</button>
-        </div>
-       
-       
+        <div id="title"></div>
+        <div id="start"></div>
+        <div id="btns"></div>
+        <div id="subtitle"></div>
+        <div id="rules"></div> 
+        <div id="playerChoice"></div>
+        <div id="computerChoice"></div>
+        <div id="nextRound"></div>
+
+        <audio id="theRockAudio">
+            <source src="theRockAudio.mp3" type="audio/mpeg">
+        </audio>
+
        <script>
 //*****************************************************************************
 
+/*When you click on the choice you should get a sound affect related to that 
+button.
+An image will display the results. 
+Keep a score board. 
+*/
+    // Both players start with a score of 0
+    let computerScore = [0];
+    let playerScore = [0];
+    let computerSelection = "";
+    let playerSelection = "";
 
+     //Adds picture of The Rock for the player.
+    let theRockPicPlayer = document.createElement("IMG");
+    theRockPicPlayer.src = ("theRock.jpeg");
+    theRockPicPlayer.style.width = "400px";
+    theRockPicPlayer.style.height = "400px";
+    theRockPicPlayer.style.position = "relative";
+    theRockPicPlayer.style.top = "100px";
+    theRockPicPlayer.style.left = "400px";
+
+     //Adds a picture of The Rock for the computer.
+    let theRockPicComputer = document.createElement("IMG");
+    theRockPicComputer.src = ("theRock.jpeg");
+    theRockPicComputer.style.width = "400px";
+    theRockPicComputer.style.height = "400px";
+    theRockPicComputer.style.position = "relative";
+    theRockPicComputer.style.top = "100px";
+    theRockPicComputer.style.left = "800px";
+
+    //Adds picture of Dwight for the player.
+    let dwightPicPlayer = document.createElement("IMG");
+    dwightPicPlayer.src = ("dwight.jpg");
+    dwightPicPlayer.style.width = "400px";
+    dwightPicPlayer.style.height = "400px";
+    dwightPicPlayer.style.position = "relative";
+    dwightPicPlayer.style.top = "100px";
+    dwightPicPlayer.style.left = "400px";
+
+    //Adds picture of Dwight for the computer.
+    let dwightPicComputer = document.createElement("IMG");
+    dwightPicComputer.src = ("dwight.jpg");
+    dwightPicComputer.style.width = "400px";
+    dwightPicComputer.style.height = "400px";
+    dwightPicComputer.style.position = "relative";
+    dwightPicComputer.style.top = "100px";
+    dwightPicComputer.style.left = "800px";
+
+    //Adds picture of Edward for the player.
+    let edwardPicPlayer = document.createElement("IMG");
+    edwardPicPlayer.src = ("edward.jpg");
+    edwardPicPlayer.style.width = "400px";
+    edwardPicPlayer.style.height = "400px";
+    edwardPicPlayer.style.position = "relative";
+    edwardPicPlayer.style.top = "100px";
+    edwardPicPlayer.style.left = "400px";
+
+    //Adds picture of Edward for the computer.
+    let edwardPicComputer = document.createElement("IMG");
+    edwardPicComputer.src = ("edward.jpg");
+    edwardPicComputer.style.width = "400px";
+    edwardPicComputer.style.height = "400px";
+    edwardPicComputer.style.position = "relative";
+    edwardPicComputer.style.top = "100px";
+    edwardPicComputer.style.left = "800px";
+
+
+      // Computer picks Rock Paper or Scissors randomly.
+      function computerChoice() {
+        let rps = ["Rock", "Paper", "Scissors"]
+            return rps[Math.floor(Math.random() * rps.length)];
+    }
+
+   // Creates the title.     
+    let title = document.querySelector("#title");
+        let headerOne = document.createElement("div");
+        headerOne.classList.add("title");
+        headerOne.textContent = "Rock Paper Scissors!";
+        title.appendChild(headerOne);
+    
+    // Creates the start button.
+    let start = document.querySelector("#start");
+        start.classList.add("btns");
+        let startBtn = document.createElement("BUTTON");
+        startBtn.innerHTML = "Let's Play!";
+        startBtn.classList.add("btn");
+        start.appendChild(startBtn);
+
+      //Creates the list of rules for the game.
+      let subtitle = document.querySelector("#subtitle");
+        let headerTwo = document.createElement("div")
+        headerTwo.classList.add("subtitle");
+        headerTwo.textContent = "Here are the Rules:";
+        subtitle.appendChild(headerTwo);
+        
+    let rules = document.querySelector("#rules");
+            rules.classList.add("rules");
+        let ruleOne = document.createElement("p");
+            ruleOne.textContent = "First player to reach 5 wins.";
+            rules.appendChild(ruleOne);
+        let ruleTwo = document.createElement("p");
+            ruleTwo.textContent = "Rock beats Scissors";
+            rules.appendChild(ruleTwo);
+        let ruleThree = document.createElement("p");
+            ruleThree.textContent = "Paper beats Rock";
+            rules.appendChild(ruleThree);
+        let ruleFour = document.createElement("p");
+            ruleFour.textContent = "Scissors beats Paper";
+            rules.appendChild(ruleFour);
+
+
+        //When clicked the start button is removed and the rock, paper, scissors buttons are added.
+   startBtn.addEventListener("click", () => {
+    let btns = document.querySelector("#btns");
+        btns.classList.add("btns");
+    
+        let rock = document.createElement("BUTTON");
+            rock.innerHTML = "Rock";
+            rock.classList.add("btn");
+            rock.id = "rock";
+            btns.appendChild(rock);
+
+        let paper = document.createElement("BUTTON");
+            paper.innerHTML = "Paper";
+            paper.classList.add("btn");
+            paper.id = "paper";
+            btns.appendChild(paper);
+
+        let scissors = document.createElement("BUTTON");
+            scissors.innerHTML = "Scissors";
+            scissors.classList.add("btn");
+            scissors.id = "scissors";
+            btns.appendChild(scissors);
+
+       //Removes the start button.
+        start.removeChild(startBtn);
+       
+        //Clears the rules off the screen.
+        subtitle.removeChild(headerTwo);
+        rules.removeChild(ruleOne);
+        rules.removeChild(ruleTwo);
+        rules.removeChild(ruleThree);
+        rules.removeChild(ruleFour);
+
+        
+
+
+         //When the Rock button is activated one round is played.
+    let theRock = document.querySelector("#rock");
+    theRock.addEventListener("click", () => {
+        document.body.appendChild(theRockPicPlayer);
+
+          //Creates Caption for player choosing The Rock.
+          let theRockPicPlayerCaption = document.createElement("p");
+          theRockPicPlayerCaption.textContent = "You chose The Rock!";
+        
+
+        //Inserts audio from The Rock
+       // let theRockAudio = document.getElementById("theRockAudio");
+         //   theRockAudio.play();
+
+        playerSelection = "Rock"
+        computerSelection = computerChoice();
+
+        
+        
+        console.log("You chose the Rock!")
+        console.log("The computer chose the " + computerSelection + "!");
+        
+        if (computerSelection === "Rock") {
+            document.body.appendChild(theRockPicComputer);
+        } else if (computerSelection === "Paper") {
+            document.body.appendChild(dwightPicComputer);
+        } else {document.body.appendChild(edwardPicComputer);}
+
+       
+       
+        if (computerSelection === "Paper") {
+            computerScore = ++computerScore;
+        } else if (computerSelection === "Scissors") {
+            playerScore = ++playerScore;
+        } else {console.log("DRAW!");}
+        
+        
+        
+        console.log("Current Score is You: " + playerScore + " Computer: " 
+        + computerScore);
+
+        if (playerScore === 5) {
+            console.log("You won!");
+            playerScore = 0;
+            computerScore = 0;
+        } else if (computerScore === 5) {
+            console.log("You lost!");
+            playerScore = 0;
+            computerScore = 0;
+        } else {console.log("Next Round!")}
+    });
+
+    //When the Paper button is activated one round is played.
+    let dwight = document.querySelector("#paper");
+    dwight.addEventListener("click", () => {
+        
+        
+            document.body.appendChild(dwightPicPlayer);
+        
+        playerSelection = "Paper"
+        computerSelection = computerChoice();
+        console.log("You chose the Paper!")
+        console.log("The computer chose the " + computerSelection +"!");
+        if (computerSelection === "Scissors") {
+            computerScore = ++computerScore;
+        } else if (computerSelection === "Rock") {
+            playerScore = ++playerScore;
+        } else {console.log("DRAW!");}
+        
+        console.log("Current Score is You: " + playerScore + " Computer: " 
+        + computerScore);
+
+        if (playerScore === 5) {
+            console.log("You won!");
+            playerScore = 0;
+            computerScore = 0;
+        } else if (computerScore === 5) {
+            console.log("You lost!");
+            playerScore = 0;
+            computerScore = 0;
+        } else {console.log("Next Round!")}
+    });
+
+       //When the Scissors button is activated one round is played.
+       let edward = document.querySelector("#scissors");
+    edward.addEventListener("click", () => {
+
+            document.body.appendChild(edwardPicPlayer);
+
+        playerSelection = "Scissors"
+        computerSelection = computerChoice();
+        console.log("You chose the Scissors!")
+        console.log("The computer chose the " + computerSelection +"!");
+        if (computerSelection === "Rock") {
+            computerScore = ++computerScore;
+        } else if (computerSelection === "Paper") {
+            playerScore = ++playerScore;
+        } else {console.log("DRAW!");}
+        console.log("Current Score is You: " + playerScore + " Computer: " 
+        + computerScore);
+
+        if (playerScore === 5) {
+            console.log("You won!");
+            playerScore = 0;
+            computerScore = 0;
+        } else if (computerScore === 5) {
+            console.log("You lost!");
+            playerScore = 0;
+            computerScore = 0;
+        } else {console.log("Next Round!")}
+    });
+
+    
+        });
 
 
     
+  
+    
+   
+
 
 
 //*****************************************************************************
