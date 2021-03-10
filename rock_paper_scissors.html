@@ -14,8 +14,10 @@
         <div id="subtitle"></div>
         <div id="rules"></div> 
         <div id="playerChoice"></div>
-        <div id="computerChoice"></div>
+        <div id="compChoice"></div>
         <div id="nextRound"></div>
+        <div id="playerScoreDisplay"></div>
+        <div id="computerScoreDisplay>"></div>
 
         <audio id="theRockAudio">
             <source src="theRockAudio.mp3" type="audio/mpeg">
@@ -38,57 +40,61 @@ Keep a score board.
      //Adds picture of The Rock for the player.
     let theRockPicPlayer = document.createElement("IMG");
     theRockPicPlayer.src = ("theRock.jpeg");
-    theRockPicPlayer.style.width = "400px";
-    theRockPicPlayer.style.height = "400px";
-    theRockPicPlayer.style.position = "relative";
-    theRockPicPlayer.style.top = "100px";
-    theRockPicPlayer.style.left = "400px";
+    theRockPicPlayer.classList.add("playerPicture")
 
      //Adds a picture of The Rock for the computer.
     let theRockPicComputer = document.createElement("IMG");
     theRockPicComputer.src = ("theRock.jpeg");
-    theRockPicComputer.style.width = "400px";
-    theRockPicComputer.style.height = "400px";
-    theRockPicComputer.style.position = "relative";
-    theRockPicComputer.style.top = "100px";
-    theRockPicComputer.style.left = "800px";
+    theRockPicComputer.classList.add("computerPicture");
 
     //Adds picture of Dwight for the player.
     let dwightPicPlayer = document.createElement("IMG");
     dwightPicPlayer.src = ("dwight.jpg");
-    dwightPicPlayer.style.width = "400px";
-    dwightPicPlayer.style.height = "400px";
-    dwightPicPlayer.style.position = "relative";
-    dwightPicPlayer.style.top = "100px";
-    dwightPicPlayer.style.left = "400px";
+    dwightPicPlayer.classList.add("playerPicture")
 
     //Adds picture of Dwight for the computer.
     let dwightPicComputer = document.createElement("IMG");
     dwightPicComputer.src = ("dwight.jpg");
-    dwightPicComputer.style.width = "400px";
-    dwightPicComputer.style.height = "400px";
-    dwightPicComputer.style.position = "relative";
-    dwightPicComputer.style.top = "100px";
-    dwightPicComputer.style.left = "800px";
+    dwightPicComputer.classList.add("computerPicture");
+
 
     //Adds picture of Edward for the player.
     let edwardPicPlayer = document.createElement("IMG");
     edwardPicPlayer.src = ("edward.jpg");
-    edwardPicPlayer.style.width = "400px";
-    edwardPicPlayer.style.height = "400px";
-    edwardPicPlayer.style.position = "relative";
-    edwardPicPlayer.style.top = "100px";
-    edwardPicPlayer.style.left = "400px";
+    edwardPicPlayer.classList.add("playerPicture")
 
     //Adds picture of Edward for the computer.
     let edwardPicComputer = document.createElement("IMG");
     edwardPicComputer.src = ("edward.jpg");
-    edwardPicComputer.style.width = "400px";
-    edwardPicComputer.style.height = "400px";
-    edwardPicComputer.style.position = "relative";
-    edwardPicComputer.style.top = "100px";
-    edwardPicComputer.style.left = "800px";
+    edwardPicComputer.classList.add("computerPicture");
 
+
+
+    //Captions for the computer.
+    let theRockCaptionComputer1 = document.createElement("p")
+        theRockCaptionComputer1.textContent = "The Computer chose";
+        theRockCaptionComputer1.classList.add("computerCaption1");
+    let theRockCaptionComputer2 = document.createElement("p")
+        theRockCaptionComputer2.textContent = "The Rock!";
+        theRockCaptionComputer2.classList.add("computerCaption2");
+
+    let dwightCaptionComputer1 = document.createElement("p")
+        dwightCaptionComputer1.textContent = "The Computer chose Dwight!";
+        dwightCaptionComputer1.classList.add("computerCaption1")
+    let dwightCaptionComputer2 = document.createElement("p")
+        dwightCaptionComputer2.textContent = "Uh, we mean paper!";
+        dwightCaptionComputer2.classList.add("computerCaption2")
+
+    let edwardCaptionComputer1 = document.createElement("p")
+        edwardCaptionComputer1.textContent = "The Computer chose Edward!";
+        edwardCaptionComputer1.classList.add("computerCaption1")
+    let edwardCaptionComputer2 = document.createElement("p")
+        edwardCaptionComputer2.textContent = "Who really likes scissors.";
+        edwardCaptionComputer2.classList.add("computerCaption2")
+
+       
+
+  
 
       // Computer picks Rock Paper or Scissors randomly.
       function computerChoice() {
@@ -97,10 +103,9 @@ Keep a score board.
     }
 
    // Creates the title.     
-    let title = document.querySelector("#title");
-        let headerOne = document.createElement("div");
-        headerOne.classList.add("title");
+   let headerOne = document.createElement("h1");
         headerOne.textContent = "Rock Paper Scissors!";
+        headerOne.classList.add("title");
         title.appendChild(headerOne);
     
     // Creates the start button.
@@ -118,6 +123,7 @@ Keep a score board.
         headerTwo.textContent = "Here are the Rules:";
         subtitle.appendChild(headerTwo);
         
+        //The Rules!
     let rules = document.querySelector("#rules");
             rules.classList.add("rules");
         let ruleOne = document.createElement("p");
@@ -171,13 +177,16 @@ Keep a score board.
 
 
          //When the Rock button is activated one round is played.
-    let theRock = document.querySelector("#rock");
-    theRock.addEventListener("click", () => {
+        let theRock = document.querySelector("#rock");
+        theRock.addEventListener("click", () => {
         document.body.appendChild(theRockPicPlayer);
 
-          //Creates Caption for player choosing The Rock.
-          let theRockPicPlayerCaption = document.createElement("p");
-          theRockPicPlayerCaption.textContent = "You chose The Rock!";
+    
+        //Caption for Player choosing Rock.
+        let theRockCaptionPlayer = document.createElement("p");
+        theRockCaptionPlayer.classList.add("player");
+        theRockCaptionPlayer.textContent = "You chose The Rock!";
+        playerChoice.appendChild(theRockCaptionPlayer);
         
 
         //Inserts audio from The Rock
@@ -186,17 +195,21 @@ Keep a score board.
 
         playerSelection = "Rock"
         computerSelection = computerChoice();
-
-        
         
         console.log("You chose the Rock!")
         console.log("The computer chose the " + computerSelection + "!");
         
         if (computerSelection === "Rock") {
             document.body.appendChild(theRockPicComputer);
+            compChoice.appendChild(theRockCaptionComputer1);
+            compChoice.appendChild(theRockCaptionComputer2);
         } else if (computerSelection === "Paper") {
             document.body.appendChild(dwightPicComputer);
-        } else {document.body.appendChild(edwardPicComputer);}
+            compChoice.appendChild(dwightCaptionComputer1);
+            compChoice.appendChild(dwightCaptionComputer2);
+        } else {document.body.appendChild(edwardPicComputer);
+                compChoice.appendChild(edwardCaptionComputer1);
+                compChoice.appendChild(edwardCaptionComputer2);}
 
        
        
