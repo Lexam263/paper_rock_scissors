@@ -16,8 +16,9 @@
         <div id="playerChoice"></div>
         <div id="compChoice"></div>
         <div id="nextRound"></div>
+        <div id="results"></div>
         <div id="playerScoreDisplay"></div>
-        <div id="computerScoreDisplay>"></div>
+        <div id="computerScoreDisplay">></div>
 
         <audio id="theRockAudio">
             <source src="theRockAudio.mp3" type="audio/mpeg">
@@ -36,6 +37,19 @@ Keep a score board.
     let playerScore = [0];
     let computerSelection = "";
     let playerSelection = "";
+
+    //Creates the players score board.
+    let playerScoreCaption = document.createElement("p");
+    playerScoreCaption.textContent = "Your Score: " + playerScore;
+    playerScoreCaption.classList.add("playerScoreDisplay");
+    playerScoreDisplay.appendChild(playerScoreCaption)
+
+    //Create the computers score board.
+    let computerScoreCaption = document.createElement("p");
+    computerScoreCaption.textContent = "The Computer's Score: " + computerScore;
+    computerScoreCaption.classList.add("computerScoreDisplay");
+    computerScoreDisplay.appendChild(computerScoreCaption);
+    
 
      //Adds picture of The Rock for the player.
     let theRockPicPlayer = document.createElement("IMG");
@@ -92,7 +106,7 @@ Keep a score board.
         edwardCaptionComputer2.textContent = "Who really likes scissors.";
         edwardCaptionComputer2.classList.add("computerCaption2")
 
-       
+    
 
   
 
@@ -173,21 +187,33 @@ Keep a score board.
         rules.removeChild(ruleThree);
         rules.removeChild(ruleFour);
 
-        
 
+        //Displays the next round button.
+        let nextRound = document.querySelector("#nextRound");
+        nextRound.classList.add("btns");
+        let nextBtn = document.createElement("BUTTON");
+        nextBtn.classList.add("btn");
+        nextBtn.innerHTML = "Next Round!";       
 
          //When the Rock button is activated one round is played.
         let theRock = document.querySelector("#rock");
         theRock.addEventListener("click", () => {
-        document.body.appendChild(theRockPicPlayer);
-
+        
+        //Removes the buttons for Rock, Paper, Scissors
+        btns.removeChild(rock);
+        btns.removeChild(paper);
+        btns.removeChild(scissors);
+        
     
+        //Displays picture of the Rock for the Player
+        document.body.appendChild(theRockPicPlayer);
+        
+            
         //Caption for Player choosing Rock.
         let theRockCaptionPlayer = document.createElement("p");
         theRockCaptionPlayer.classList.add("player");
         theRockCaptionPlayer.textContent = "You chose The Rock!";
         playerChoice.appendChild(theRockCaptionPlayer);
-        
 
         //Inserts audio from The Rock
        // let theRockAudio = document.getElementById("theRockAudio");
@@ -219,8 +245,8 @@ Keep a score board.
             playerScore = ++playerScore;
         } else {console.log("DRAW!");}
         
-        
-        
+        playerScoreCaption.textContent = "Your Score: " + playerScore;
+        computerScoreCaption.textContent = "The Computer's Score: " + computerScore;
         console.log("Current Score is You: " + playerScore + " Computer: " 
         + computerScore);
 
@@ -233,25 +259,59 @@ Keep a score board.
             playerScore = 0;
             computerScore = 0;
         } else {console.log("Next Round!")}
+
+        //Adds the next round button.
+        nextRound.appendChild(nextBtn);
     });
 
     //When the Paper button is activated one round is played.
     let dwight = document.querySelector("#paper");
     dwight.addEventListener("click", () => {
-        
-        
-            document.body.appendChild(dwightPicPlayer);
+
+        //Removes the buttons for Rock, Paper, Scissors
+        btns.removeChild(rock);
+        btns.removeChild(paper);
+        btns.removeChild(scissors);
+
+    //Displays the picure of Dwight for the Player
+    document.body.appendChild(dwightPicPlayer);
+
+    //Caption for Player choosing Paper.
+    let dwightCaptionPlayer = document.createElement("p");
+        dwightCaptionPlayer.classList.add("player");
+        dwightCaptionPlayer.textContent = "You chose Dwight!";
+        playerChoice.appendChild(dwightCaptionPlayer);
         
         playerSelection = "Paper"
         computerSelection = computerChoice();
+       
+       
         console.log("You chose the Paper!")
         console.log("The computer chose the " + computerSelection +"!");
+       
+        //Posts the picture and caption related to the computers choice.
+        if (computerSelection === "Rock") {
+            document.body.appendChild(theRockPicComputer);
+            compChoice.appendChild(theRockCaptionComputer1);
+            compChoice.appendChild(theRockCaptionComputer2);
+        } else if (computerSelection === "Paper") {
+            document.body.appendChild(dwightPicComputer);
+            compChoice.appendChild(dwightCaptionComputer1);
+            compChoice.appendChild(dwightCaptionComputer2);
+        } else {document.body.appendChild(edwardPicComputer);
+                compChoice.appendChild(edwardCaptionComputer1);
+                compChoice.appendChild(edwardCaptionComputer2);} 
+       
+       
         if (computerSelection === "Scissors") {
             computerScore = ++computerScore;
         } else if (computerSelection === "Rock") {
             playerScore = ++playerScore;
         } else {console.log("DRAW!");}
         
+        playerScoreCaption.textContent = "Your Score: " + playerScore;
+        computerScoreCaption.textContent = "The Computer's Score: " + computerScore;
+
         console.log("Current Score is You: " + playerScore + " Computer: " 
         + computerScore);
 
@@ -264,23 +324,59 @@ Keep a score board.
             playerScore = 0;
             computerScore = 0;
         } else {console.log("Next Round!")}
+
+        //Adds the next round button.
+        nextRound.appendChild(nextBtn);
     });
 
        //When the Scissors button is activated one round is played.
        let edward = document.querySelector("#scissors");
-    edward.addEventListener("click", () => {
+        edward.addEventListener("click", () => {
+        
+        //Removes the buttons for Rock, Paper, Scissors
+        btns.removeChild(rock);
+        btns.removeChild(paper);
+        btns.removeChild(scissors);
 
-            document.body.appendChild(edwardPicPlayer);
+        
+        
+        //Displays picture of Edward for the Player
+        document.body.appendChild(edwardPicPlayer);
 
         playerSelection = "Scissors"
         computerSelection = computerChoice();
+
+        //Caption for Player choosing Edward.
+        let edwardCaptionPlayer = document.createElement("p");
+        edwardCaptionPlayer.classList.add("player");
+        edwardCaptionPlayer.textContent = "You chose Eddie!";
+        playerChoice.appendChild(edwardCaptionPlayer);
+       
         console.log("You chose the Scissors!")
         console.log("The computer chose the " + computerSelection +"!");
+       
+          if (computerSelection === "Rock") {
+            document.body.appendChild(theRockPicComputer);
+            compChoice.appendChild(theRockCaptionComputer1);
+            compChoice.appendChild(theRockCaptionComputer2);
+        } else if (computerSelection === "Paper") {
+            document.body.appendChild(dwightPicComputer);
+            compChoice.appendChild(dwightCaptionComputer1);
+            compChoice.appendChild(dwightCaptionComputer2);
+        } else {document.body.appendChild(edwardPicComputer);
+                compChoice.appendChild(edwardCaptionComputer1);
+                compChoice.appendChild(edwardCaptionComputer2);}
+       
         if (computerSelection === "Rock") {
             computerScore = ++computerScore;
         } else if (computerSelection === "Paper") {
             playerScore = ++playerScore;
-        } else {console.log("DRAW!");}
+        } else {console.log("DRAW!");} 
+      
+      
+        playerScoreCaption.textContent = "Your Score: " + playerScore;
+        computerScoreCaption.textContent = "The Computer's Score: " + computerScore;
+
         console.log("Current Score is You: " + playerScore + " Computer: " 
         + computerScore);
 
@@ -293,8 +389,39 @@ Keep a score board.
             playerScore = 0;
             computerScore = 0;
         } else {console.log("Next Round!")}
-    });
 
+        //Adds the next round button.
+        nextRound.appendChild(nextBtn);
+    });
+    //Uses the next round button to reset the board.
+    nextBtn.addEventListener("click", () => {
+        if (playerSelection === "Rock") {
+        document.body.removeChild(theRockPicPlayer);
+        playerChoice.removeChild(theRockCaptionPlayer);
+        }   else if (playerSelection === "Paper") {
+        document.body.removeChild(dwightPicPlayer);
+        playerChoice.removeChild(dwightCaptionPlayer);
+        } else {
+        document.body.removeChild(edwardPicPlayer);
+        playerChoice.removeChild(edwardCaptionPlayer);
+        };
+
+if (computerSelection === "Rock") {
+            document.body.removeChild(theRockPicComputer);
+            compChoice.removeChild(theRockCaptionComputer1);
+            compChoice.removeChild(theRockCaptionComputer2);
+        } else if (computerSelection === "Paper") {
+            document.body.removeChild(dwightPicComputer);
+            compChoice.removeChild(dwightCaptionComputer1);
+            compChoice.removeChild(dwightCaptionComputer2);
+        } else {document.body.removeChild(edwardPicComputer);
+                compChoice.removeChild(edwardCaptionComputer1);
+                compChoice.removeChild(edwardCaptionComputer2);}
+       
+        btns.appendChild(rock);
+        btns.appendChild(paper);
+        btns.appendChild(scissors);
+        });
     
         });
 
