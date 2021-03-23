@@ -153,29 +153,45 @@ Keep a score board.
             ruleFour.textContent = "Scissors beats Paper";
             rules.appendChild(ruleFour);
 
+            let btns = document.querySelector("#btns");
+            btns.classList.add("btns");
 
-        //When clicked the start button is removed and the rock, paper, scissors buttons are added.
-   startBtn.addEventListener("click", () => {
-    let btns = document.querySelector("#btns");
-        btns.classList.add("btns");
-    
-        let rock = document.createElement("BUTTON");
+            let rock = document.createElement("BUTTON");
             rock.innerHTML = "Rock";
             rock.classList.add("btn");
             rock.id = "rock";
-            btns.appendChild(rock);
 
-        let paper = document.createElement("BUTTON");
+            let paper = document.createElement("BUTTON");
             paper.innerHTML = "Paper";
             paper.classList.add("btn");
             paper.id = "paper";
-            btns.appendChild(paper);
 
-        let scissors = document.createElement("BUTTON");
+            let scissors = document.createElement("BUTTON");
             scissors.innerHTML = "Scissors";
             scissors.classList.add("btn");
             scissors.id = "scissors";
-            btns.appendChild(scissors);
+
+                //Caption for Player choosing Rock.
+        let theRockCaptionPlayer = document.createElement("p");
+        theRockCaptionPlayer.classList.add("player");
+        theRockCaptionPlayer.textContent = "You chose The Rock!";
+
+            //Caption for Player choosing Paper.
+        let dwightCaptionPlayer = document.createElement("p");
+        dwightCaptionPlayer.classList.add("player");
+        dwightCaptionPlayer.textContent = "You chose Dwight!";
+
+        //Caption for Player choosing Edward.
+        let edwardCaptionPlayer = document.createElement("p");
+        edwardCaptionPlayer.classList.add("player");
+        edwardCaptionPlayer.textContent = "You chose Eddie!";
+
+
+        //When clicked the start button is removed and the rock, paper, scissors buttons are added.
+   startBtn.addEventListener("click", () => {
+    btns.appendChild(rock);
+    btns.appendChild(paper);
+    btns.appendChild(scissors);
 
        //Removes the start button.
         start.removeChild(startBtn);
@@ -207,12 +223,6 @@ Keep a score board.
     
         //Displays picture of the Rock for the Player
         document.body.appendChild(theRockPicPlayer);
-        
-            
-        //Caption for Player choosing Rock.
-        let theRockCaptionPlayer = document.createElement("p");
-        theRockCaptionPlayer.classList.add("player");
-        theRockCaptionPlayer.textContent = "You chose The Rock!";
         playerChoice.appendChild(theRockCaptionPlayer);
 
         //Inserts audio from The Rock
@@ -276,10 +286,8 @@ Keep a score board.
     //Displays the picure of Dwight for the Player
     document.body.appendChild(dwightPicPlayer);
 
-    //Caption for Player choosing Paper.
-    let dwightCaptionPlayer = document.createElement("p");
-        dwightCaptionPlayer.classList.add("player");
-        dwightCaptionPlayer.textContent = "You chose Dwight!";
+
+
         playerChoice.appendChild(dwightCaptionPlayer);
         
         playerSelection = "Paper"
@@ -346,10 +354,7 @@ Keep a score board.
         playerSelection = "Scissors"
         computerSelection = computerChoice();
 
-        //Caption for Player choosing Edward.
-        let edwardCaptionPlayer = document.createElement("p");
-        edwardCaptionPlayer.classList.add("player");
-        edwardCaptionPlayer.textContent = "You chose Eddie!";
+
         playerChoice.appendChild(edwardCaptionPlayer);
        
         console.log("You chose the Scissors!")
@@ -395,32 +400,67 @@ Keep a score board.
     });
     //Uses the next round button to reset the board.
     nextBtn.addEventListener("click", () => {
-        if (playerSelection === "Rock") {
-        document.body.removeChild(theRockPicPlayer);
-        playerChoice.removeChild(theRockCaptionPlayer);
-        }   else if (playerSelection === "Paper") {
-        document.body.removeChild(dwightPicPlayer);
-        playerChoice.removeChild(dwightCaptionPlayer);
-        } else {
-        document.body.removeChild(edwardPicPlayer);
-        playerChoice.removeChild(edwardCaptionPlayer);
-        };
-
-if (computerSelection === "Rock") {
+        if (playerSelection === "Rock" && computerSelection === "Rock") {
+            document.body.removeChild(theRockPicPlayer);
+            playerChoice.removeChild(theRockCaptionPlayer);
             document.body.removeChild(theRockPicComputer);
             compChoice.removeChild(theRockCaptionComputer1);
             compChoice.removeChild(theRockCaptionComputer2);
-        } else if (computerSelection === "Paper") {
+        }else if (playerSelection === "Paper" && computerSelection === "Paper") {
+            document.body.removeChild(dwightPicPlayer);
+            playerChoice.removeChild(dwightCaptionPlayer);
             document.body.removeChild(dwightPicComputer);
             compChoice.removeChild(dwightCaptionComputer1);
             compChoice.removeChild(dwightCaptionComputer2);
-        } else {document.body.removeChild(edwardPicComputer);
-                compChoice.removeChild(edwardCaptionComputer1);
-                compChoice.removeChild(edwardCaptionComputer2);}
-       
+        }else if (playerSelection === "Scissors" && computerSelection === "Scissors"){
+            document.body.removeChild(edwardPicPlayer);
+            playerChoice.removeChild(edwardCaptionPlayer);
+            document.body.removeChild(edwardPicComputer);
+            compChoice.removeChild(edwardCaptionComputer1);
+            compChoice.removeChild(edwardCaptionComputer2);
+        }else if (playerSelection === "Paper" && computerSelection === "Rock") {
+            document.body.removeChild(dwightPicPlayer);
+            playerChoice.removeChild(dwightCaptionPlayer);
+            document.body.removeChild(theRockPicComputer);
+            compChoice.removeChild(theRockCaptionComputer1);
+            compChoice.removeChild(theRockCaptionComputer2);
+        }else if (playerSelection === "Paper" && computerSelection === "Scissors") {
+            document.body.removeChild(dwightPicPlayer);
+            playerChoice.removeChild(dwightCaptionPlayer);
+            document.body.removeChild(edwardPicComputer);
+            compChoice.removeChild(edwardCaptionComputer1);
+            compChoice.removeChild(edwardCaptionComputer2);
+        }else if (playerSelection === "Scissors" && computerSelection === "Rock") {
+            document.body.removeChild(edwardPicPlayer);
+            playerChoice.removeChild(edwardCaptionPlayer);
+            document.body.removeChild(theRockPicComputer);
+            compChoice.removeChild(theRockCaptionComputer1);
+            compChoice.removeChild(theRockCaptionComputer2);
+        }else if (playerSelection === "Scissors" && computerSelection === "Paper") {
+            document.body.removeChild(edwardPicPlayer);
+            playerChoice.removeChild(edwardCaptionPlayer);
+            document.body.removeChild(dwightPicComputer);
+            compChoice.removeChild(dwightCaptionComputer1);
+            compChoice.removeChild(dwightCaptionComputer2);
+        }else if (playerSelection === "Rock" && computerSelection === "Paper") {
+            document.body.removeChild(theRockPicPlayer);
+            playerChoice.removeChild(theRockCaptionPlayer);
+            document.body.removeChild(dwightPicComputer);
+            compChoice.removeChild(dwightCaptionComputer1);
+            compChoice.removeChild(dwightCaptionComputer2);
+        }else if (playerSelection === "Rock" && computerSelection === "Scissors") {
+            document.body.removeChild(theRockPicPlayer);
+            playerChoice.removeChild(theRockCaptionPlayer);
+            document.body.removeChild(edwardPicComputer);
+            compChoice.removeChild(edwardCaptionComputer1);
+            compChoice.removeChild(edwardCaptionComputer2);
+        } else {console.log("Next Round Error")}
+
+
         btns.appendChild(rock);
         btns.appendChild(paper);
         btns.appendChild(scissors);
+        nextRound.removeChild(nextBtn);
         });
     
         });
