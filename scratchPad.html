@@ -9,26 +9,21 @@
     <div id=scratchPad></div>
 <script>
 //*****************************************************************************
-let headerOne = document.createElement("h1");
-        headerOne.textContent = "Rock Paper Scissors!";
-        headerOne.style.color = "white";
-        headerOne.style.textAlign = "center";
-        headerOne.style.fontSize = "90px";
-        headerOne.style.fontWeight = "bold";
-        headerOne.style.fontFamily = "monospace";
-        headerOne.style.textShadow = "black 0 20px 30p";
-        headerOne.style.marginTop = "50px";
-        title.appendChild(headerOne);
+if (playerScore === 5) {
+            document.body.appendChild(youWin);
+            roundReset();
+            nextRound.removeChild(nextBtn);
+            playerScore = 0;
+            computerScore = 0;
+        } else if (computerScore === 5) {
+            document.body.appendChild(youLose);
+            roundReset();
+            nextRound.removeChild(nextBtn);
+            playerScore = 0;
+            computerScore = 0;
+        } else {console.log("Next Round!")}
 
-
-        color: #ffffff;
-    text-align: center;
-    font-size: 90px;
-    font-weight: bold;
-    font-family: monospace;
-    text-shadow: black 0 20px 30px;
-    margin-top: 50px;
-
+        <button class="btn">Next Round!</button>
 //*****************************************************************************
 </script>
 

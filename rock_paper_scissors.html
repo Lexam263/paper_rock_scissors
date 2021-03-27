@@ -186,6 +186,15 @@ Keep a score board.
         edwardCaptionPlayer.classList.add("player");
         edwardCaptionPlayer.textContent = "You chose Eddie!";
 
+        //End of Game
+        let youWin = document.createElement("IMG");
+        youWin.src = ("youWin.gif");
+        youWin.classList.add("results");
+
+        let youLose = document.createElement("IMG");
+        youLose.src = ("youLose.gif");
+        youLose.classList.add("results");
+
 
         //When clicked the start button is removed and the rock, paper, scissors buttons are added.
    startBtn.addEventListener("click", () => {
@@ -261,14 +270,18 @@ Keep a score board.
         + computerScore);
 
         if (playerScore === 5) {
-            console.log("You won!");
+            document.body.appendChild(youWin);
+            roundReset();
             playerScore = 0;
             computerScore = 0;
         } else if (computerScore === 5) {
-            console.log("You lost!");
+            document.body.appendChild(youLose);
+            roundReset();
             playerScore = 0;
             computerScore = 0;
         } else {console.log("Next Round!")}
+
+
 
         //Adds the next round button.
         nextRound.appendChild(nextBtn);
@@ -324,11 +337,13 @@ Keep a score board.
         + computerScore);
 
         if (playerScore === 5) {
-            console.log("You won!");
+            document.body.appendChild(youWin);
+            roundReset();
             playerScore = 0;
             computerScore = 0;
         } else if (computerScore === 5) {
-            console.log("You lost!");
+            document.body.appendChild(youLose);
+            roundReset();
             playerScore = 0;
             computerScore = 0;
         } else {console.log("Next Round!")}
@@ -386,20 +401,23 @@ Keep a score board.
         + computerScore);
 
         if (playerScore === 5) {
-            console.log("You won!");
+            document.body.appendChild(youWin);
+            roundReset();
             playerScore = 0;
             computerScore = 0;
         } else if (computerScore === 5) {
-            console.log("You lost!");
+            document.body.appendChild(youLose);
+            roundReset();
             playerScore = 0;
             computerScore = 0;
         } else {console.log("Next Round!")}
+
 
         //Adds the next round button.
         nextRound.appendChild(nextBtn);
     });
     //Uses the next round button to reset the board.
-    nextBtn.addEventListener("click", () => {
+    function roundReset () {
         if (playerSelection === "Rock" && computerSelection === "Rock") {
             document.body.removeChild(theRockPicPlayer);
             playerChoice.removeChild(theRockCaptionPlayer);
@@ -460,10 +478,15 @@ Keep a score board.
         btns.appendChild(rock);
         btns.appendChild(paper);
         btns.appendChild(scissors);
+
+        if () {
         nextRound.removeChild(nextBtn);
-        });
-    
-        });
+        }
+        
+        };
+        nextBtn.addEventListener('click', roundReset);
+       
+    });
 
 
     
