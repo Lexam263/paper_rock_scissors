@@ -9,21 +9,13 @@
     <div id=scratchPad></div>
 <script>
 //*****************************************************************************
-if (playerScore === 5) {
-            document.body.appendChild(youWin);
-            roundReset();
-            nextRound.removeChild(nextBtn);
-            playerScore = 0;
-            computerScore = 0;
-        } else if (computerScore === 5) {
-            document.body.appendChild(youLose);
-            roundReset();
-            nextRound.removeChild(nextBtn);
-            playerScore = 0;
-            computerScore = 0;
-        } else {console.log("Next Round!")}
 
-        <button class="btn">Next Round!</button>
+// Using an anonymous callback function with the arrow syntax:
+setTimeout(() => console.log("Howdy!"), 1000)
+
+// This is equivalent to using the function keyword:
+setTimeout(function () { console.log("Howdy!") }, 1000)
+
 //*****************************************************************************
 </script>
 

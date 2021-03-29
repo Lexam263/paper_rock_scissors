@@ -29,7 +29,7 @@ body {
 .rules {
     color: #ffffff;
     text-align: center;
-    font-size: 35px;
+font-size: 35px;
     font-weight: bold;
     font-family: monospace;
     text-shadow: black 0 20px 30px;
@@ -65,8 +65,8 @@ body {
     width: 400px;
     height: 400px;
     position: absolute;
-    top: 350px;
-    left: 400px;
+    top: 37.4%;;
+    left: 21%;
 }
 
 .computerPicture {
@@ -74,8 +74,8 @@ body {
     width: 400px;
     height: 400px;
     position: absolute;
-    top: 350px;
-    left: 1150px;
+    top: 37.4%;
+    left: 60%;
 }
 .player {
     color: #ffffff;
@@ -143,7 +143,7 @@ body {
     font-size: 40px;
     font-weight: bold;
     margin-left: 30px;
-    margin-top: 25px;
+
 
 }
 
@@ -155,9 +155,11 @@ body {
 
 .results {
     display: flex;
+    position: absolute;
     width: 400px;
     height: 400px;
-    position: absolute;
-    top: auto;
-    left: auto;
+    top: 37.4%;
+    left: 40%;
+    
+    
 }
