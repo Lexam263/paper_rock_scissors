@@ -6,15 +6,34 @@
     </header>
 <body>
 
-    <div id=scratchPad></div>
+    <div id=nextRound></div>
 <script>
 //*****************************************************************************
 
-// Using an anonymous callback function with the arrow syntax:
-setTimeout(() => console.log("Howdy!"), 1000)
+let nextRound = document.querySelector("#nextRound");
+        let nextBtn = document.createElement("BUTTON");
+        nextBtn.innerHTML = "Rock";       
+nextRound.appendChild(nextBtn);
 
-// This is equivalent to using the function keyword:
-setTimeout(function () { console.log("Howdy!") }, 1000)
+
+nextBtn.addEventListener("click", rockButton);
+
+let playerSelection = ""
+
+function rockButton () {
+    return playerSelection = "Rock";
+}
+
+
+let otherBtn = document.createElement("BUTTON");
+        otherBtn.innerHTML = "Other Button";       
+nextRound.appendChild(otherBtn);
+
+otherBtn.addEventListener("click", rockConsole);
+function rockConsole () {
+    console.log(playerSelection)
+}
+
 
 //*****************************************************************************
 </script>
