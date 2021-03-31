@@ -27,7 +27,6 @@
 //Variables 
 
 //Player variables
-
 //Displays pictures for the player
 let theRockPicPlayer = document.createElement("IMG");
     theRockPicPlayer.src = ("theRock.jpeg");
@@ -55,24 +54,23 @@ let edwardCaptionPlayer = document.createElement("p");
     edwardCaptionPlayer.textContent = "You chose Edward!";
 
 //Displays Scoreboard for the player
+let playerScore = [0];
 let playerScoreCaption = document.createElement("p");
     playerScoreCaption.textContent = "Your Score: " + playerScore;
     playerScoreCaption.classList.add("playerScoreDisplay");
     playerScoreDisplay.appendChild(playerScoreCaption);
-    let playerScore = [0];
     let playerSelection = "";
 
 
 //Computer Variables
-
 //Displays Scoreboard for the computer
-
+let computerScore = [0];
 let computerScoreCaption = document.createElement("p");
     computerScoreCaption.textContent = "Comp Score: " + computerScore;
     computerScoreCaption.classList.add("computerScoreDisplay");
     computerScoreDisplay.appendChild(computerScoreCaption);
-    let computerScore = [0];
-    let computerSelection = computerChoice();
+    
+    let computerSelection = "";
 
 //Displays pictures for the computer
 let theRockPicComputer = document.createElement("IMG");
@@ -102,7 +100,6 @@ let edwardCaptionComputer = document.createElement("p");
 
 
 //Game variables
-
 //Title
 let headerOne = document.createElement("h1");
     headerOne.textContent = "Rock Paper Scissors!";
@@ -146,42 +143,37 @@ let start = document.querySelector("#start");
     startBtn.addEventListener("click", startGame);
 
 //Rock
-let rock = document.createElement("BUTTON");
-    rock.innerHTML = "Rock";
-    rock.classList.add("btn");
-    rock.id = "rock";
-let theRock = document.querySelector("#rock");
-        theRock.addEventListener("click", () => {
-            return playerSelection = "Rock";
-
-        });
-
+let rock = document.querySelector("#btns");
+    rock.classList.add("btns");
+    let rockBtn = document.createElement("BUTTON");
+    rockBtn.innerHTML = "Rock";
+    rockBtn.classList.add("btn");
+    rockBtn.addEventListener("click", rockFunction);
+    
+    
 //Paper
-let paper = document.createElement("BUTTON");
-    paper.innerHTML = "Paper";
-    paper.classList.add("btn");
-    paper.id = "paper";
-let dwight = document.querySelector("#paper");
-    dwight.addEventListener("click", () => {
-        return playerSelection = "Paper";
-    });
-
+let paper = document.querySelector("#btns");
+    paper.classList.add("btns");
+    let paperBtn = document.createElement("BUTTON");
+    paperBtn.innerHTML = "Paper";
+    paperBtn.classList.add("btn");
+    paperBtn.addEventListener("click", paperFunction);
+    
 //Scissors
-let scissors = document.createElement("BUTTON");
-    scissors.innerHTML = "Scissors";
-    scissors.classList.add("btn");
-    scissors.id = "scissors";
-let edward = document.querySelector("#scissors");
-        edward.addEventListener("click", () => {
-        return playerSelection = "Scissors";
-        });
-
+let scissors = document.querySelector("#btns");
+    scissors.classList.add("btns");
+    let scissorsBtn = document.createElement("BUTTON");
+    scissorsBtn.innerHTML = "Scissors";
+    scissorsBtn.classList.add("btn");
+    scissorsBtn.addEventListener("click", scissorsFunction);
+    
 //Next Round
 let nextRound = document.querySelector("#nextRound");
     nextRound.classList.add("btns");
     let nextBtn = document.createElement("BUTTON");
     nextBtn.classList.add("btn");
-    nextBtn.innerHTML = "Next Round!"; 
+    nextBtn.innerHTML = "Next Round!";
+    nextBtn.addEventListener("click", roundReset);
 
 //Play Again
 let playAgain = document.querySelector("#playAgain");
@@ -190,6 +182,7 @@ let playAgain = document.querySelector("#playAgain");
     playAgainBtn.classList.add("btn");
     playAgainBtn.classList.add("playAgain");
     playAgainBtn.innerHTML = "Play Again";
+    playAgainBtn.addEventListener("click", gameReset);
 
 
 //Game Results
@@ -203,14 +196,17 @@ let youLose = document.createElement("IMG");
 
 let youTie = document.createElement("div");
     youTie.classList.add("subtitle");
-    youTie.textContent = "Draw!";
+    youTie.classList.add("resultsCaption")
+    youTie.textContent = "Draw! Draw! Draw!";
 
 let winRound = document.createElement("div");
     winRound.classList.add("subtitle");
+    winRound.classList.add("resultsCaption")
     winRound.textContent = "You win this round!";
 
 let loseRound = document.createElement("div");
     loseRound.classList.add("subtitle");
+    loseRound.classList.add("resultsCaption")
     loseRound.textContent = "You lose this Round!";
 
 
@@ -218,10 +214,6 @@ let loseRound = document.createElement("div");
 
 //Start Game
 function startGame() {
-    //Displays the game pieces
-    btns.appendChild(rock);
-    btns.appendChild(paper);
-    btns.appendChild(scissors);
     //Removes the start button and the rules
     start.removeChild(startBtn);
     subtitle.removeChild(headerTwo);
@@ -229,68 +221,288 @@ function startGame() {
     rules.removeChild(ruleTwo);
     rules.removeChild(ruleThree);
     rules.removeChild(ruleFour);
+    //Displays the game pieces
+    rock.appendChild(rockBtn);
+    paper.appendChild(paperBtn);
+    scissors.appendChild(scissorsBtn);    
 }
 
-// Computer picks Rock Paper or Scissors randomly
-function computerChoice() {
-    let rps = ["Rock", "Paper", "Scissors"]
-    return rps[Math.floor(Math.random() * rps.length)];
+//Player chooses Rock
+function rockFunction() {
+    playerSelection = "Rock";
+    theMatch();
+}
+//Player Chooses Paper
+function paperFunction() {
+    playerSelection = "Paper";
+    theMatch();
+}
+//Player Chooses Scissors
+function scissorsFunction() {
+    playerSelection = "Scissors";
+    theMatch();
 }
 
 //Plays the Game
 function theMatch() {
+    // Computer picks Rock Paper or Scissors randomly
+    function computerChoice() {
+        let rps = ["Rock", "Paper", "Scissors"]
+        return rps[Math.floor(Math.random() * rps.length)];
+    } computerSelection = computerChoice();
+   
     //Removes the buttons for Rock, Paper, Scissors
-    btns.removeChild(rock);
-    btns.removeChild(paper);
-    btns.removeChild(scissors);
+    rock.removeChild(rockBtn);
+    paper.removeChild(paperBtn);
+    scissors.removeChild(scissorsBtn);
     //Displays the next round button
     nextRound.appendChild(nextBtn);
 
+    //Displays pictures and captions then adds to the respective score
     if (playerSelection === "Rock" && computerSelection === "Rock") {
-        //Displays pictures and captions
         document.body.appendChild(theRockPicPlayer);
         playerChoice.appendChild(theRockCaptionPlayer);
         document.body.appendChild(theRockPicComputer);
         compChoice.appendChild(theRockCaptionComputer);
-        //Displays a tie
         subtitle.appendChild(youTie); 
     }
     else if (playerSelection === "Paper" && computerSelection === "Paper") {
-        //Displays pictures and captions
         document.body.appendChild(dwightPicPlayer);
         playerChoice.appendChild(dwightCaptionPlayer);
         document.body.appendChild(dwightPicComputer);
         compChoice.appendChild(dwightCaptionComputer);
-        //Displays a tie
         subtitle.appendChild(youTie); 
     }
     else if (playerSelection === "Scissors" && computerSelection === "Scissors") {
-        //Displays pictures and captions
         document.body.appendChild(edwardPicPlayer);
         playerChoice.appendChild(edwardCaptionPlayer);
         document.body.appendChild(edwardPicComputer);
         compChoice.appendChild(edwardCaptionComputer);
-        //Displays a tie
         subtitle.appendChild(youTie);
     }
-    else if (playerSelection === "Rock" && computerSelection === "Rock") {
-        
+    else if (playerSelection === "Rock" && computerSelection === "Paper") {
+        document.body.appendChild(theRockPicPlayer);
+        playerChoice.appendChild(theRockCaptionPlayer);
+        document.body.appendChild(dwightPicComputer);
+        compChoice.appendChild(dwightCaptionComputer);
+        subtitle.appendChild(loseRound);
+        //Point to the computer!
+        computerScore = ++computerScore;
     }
+    else if (playerSelection === "Rock" && computerSelection === "Scissors") {
+        document.body.appendChild(theRockPicPlayer);
+        playerChoice.appendChild(theRockCaptionPlayer);
+        document.body.appendChild(edwardPicComputer);
+        compChoice.appendChild(edwardCaptionComputer);
+        subtitle.appendChild(winRound);
+        //Point to the Player!
+        playerScore = ++playerScore;
+    }
+    else if (playerSelection === "Paper" && computerSelection === "Rock") {
+        document.body.appendChild(dwightPicPlayer);
+        playerChoice.appendChild(dwightCaptionPlayer);
+        document.body.appendChild(theRockPicComputer);
+        compChoice.appendChild(theRockCaptionComputer);
+        subtitle.appendChild(winRound);
+        //Point to the Player!
+        playerScore = ++playerScore;
+    } 
+    else if (playerSelection === "Paper" && computerSelection === "Scissors") {
+        document.body.appendChild(dwightPicPlayer);
+        playerChoice.appendChild(dwightCaptionPlayer);
+        document.body.appendChild(edwardPicComputer)
+        compChoice.appendChild(edwardCaptionComputer);
+        subtitle.appendChild(loseRound);
+        //Point to the computer!
+        computerScore = ++computerScore;
+    } 
+    else if (playerSelection === "Scissors" && computerSelection === "Rock") {
+        document.body.appendChild(edwardPicPlayer);
+        playerChoice.appendChild(edwardCaptionPlayer);
+        document.body.appendChild(theRockPicComputer);
+        compChoice.appendChild(theRockCaptionComputer);
+        subtitle.appendChild(loseRound);
+        //Point to the computer!
+        computerScore = ++computerScore;
+    }
+    else if (playerSelection === "Scissors" && computerSelection === "Paper") {
+        //Displays pictures and captions
+        document.body.appendChild(edwardPicPlayer);
+        playerChoice.appendChild(edwardCaptionPlayer);
+        document.body.appendChild(dwightPicComputer);
+        compChoice.appendChild(dwightCaptionComputer);
+        subtitle.appendChild(winRound);
+        //Point to the Player!
+        playerScore = ++playerScore;
+    } else {console.log("Error in theMatch function.")}
+
+    //Updates the score board
+    playerScoreCaption.textContent = "Your Score: " + playerScore;
+    computerScoreCaption.textContent = "Comp Score: " + computerScore;
+    
+    //Calls referee function to check for a winner
+    referee ();
 }
 
+//Determines the winner or displays the next round button
+function referee () { 
+    if (playerScore === 5) {
+        document.body.appendChild(youWin);
+        playAgain.appendChild(playAgainBtn);
+        subtitle.removeChild(winRound);
+        nextRound.removeChild(nextBtn);
+    } 
+    else if (computerScore === 5) {
+        document.body.appendChild(youLose);
+        playAgain.appendChild(playAgainBtn);
+        subtitle.removeChild(loseRound);
+        nextRound.removeChild(nextBtn);
+    } 
+    else {nextRound.appendChild(nextBtn);} 
+}
 
+//Resets the board for the next round
+function roundReset () {
+    //Remove pictures and captions
+    if (playerSelection === "Rock" && computerSelection === "Rock") {
+        document.body.removeChild(theRockPicPlayer);
+        playerChoice.removeChild(theRockCaptionPlayer);
+        document.body.removeChild(theRockPicComputer);
+        compChoice.removeChild(theRockCaptionComputer);
+        subtitle.removeChild(youTie);
+    }
+    else if (playerSelection === "Paper" && computerSelection === "Paper") {
+        document.body.removeChild(dwightPicPlayer);
+        playerChoice.removeChild(dwightCaptionPlayer);
+        document.body.removeChild(dwightPicComputer);
+        compChoice.removeChild(dwightCaptionComputer);
+        subtitle.removeChild(youTie);
+    }
+    else if (playerSelection === "Scissors" && computerSelection === "Scissors"){
+        document.body.removeChild(edwardPicPlayer);
+        playerChoice.removeChild(edwardCaptionPlayer);
+        document.body.removeChild(edwardPicComputer);
+        compChoice.removeChild(edwardCaptionComputer); 
+        subtitle.removeChild(youTie);       
+    }
+    else if (playerSelection === "Paper" && computerSelection === "Rock") {
+        document.body.removeChild(dwightPicPlayer);
+        playerChoice.removeChild(dwightCaptionPlayer);
+        document.body.removeChild(theRockPicComputer);
+        compChoice.removeChild(theRockCaptionComputer);
+        subtitle.removeChild(winRound);
+    }
+    else if (playerSelection === "Paper" && computerSelection === "Scissors") {
+        document.body.removeChild(dwightPicPlayer);
+        playerChoice.removeChild(dwightCaptionPlayer);
+        document.body.removeChild(edwardPicComputer);
+        compChoice.removeChild(edwardCaptionComputer);
+        subtitle.removeChild(loseRound);
+    }
+    else if (playerSelection === "Scissors" && computerSelection === "Rock") {
+        document.body.removeChild(edwardPicPlayer);
+        playerChoice.removeChild(edwardCaptionPlayer);
+        document.body.removeChild(theRockPicComputer);
+        compChoice.removeChild(theRockCaptionComputer)
+        subtitle.removeChild(loseRound);
+        
+    }
+    else if (playerSelection === "Scissors" && computerSelection === "Paper") {
+        document.body.removeChild(edwardPicPlayer);
+        playerChoice.removeChild(edwardCaptionPlayer);
+        document.body.removeChild(dwightPicComputer);
+        compChoice.removeChild(dwightCaptionComputer);
+        subtitle.removeChild(winRound);    
+    }
+    else if (playerSelection === "Rock" && computerSelection === "Paper") {
+        document.body.removeChild(theRockPicPlayer);
+        playerChoice.removeChild(theRockCaptionPlayer);
+        document.body.removeChild(dwightPicComputer);
+        compChoice.removeChild(dwightCaptionComputer);
+        subtitle.removeChild(loseRound);
+    }
+    else if (playerSelection === "Rock" && computerSelection === "Scissors") {
+        document.body.removeChild(theRockPicPlayer);
+        playerChoice.removeChild(theRockCaptionPlayer);
+        document.body.removeChild(edwardPicComputer);
+        compChoice.removeChild(edwardCaptionComputer);   
+        subtitle.removeChild(winRound); 
+    }
+    else {console.log("Next Round Error")}
+    
+    //Adds game pieces back and removes Next round button
+    rock.appendChild(rockBtn);
+    paper.appendChild(paperBtn);
+    scissors.appendChild(scissorsBtn);
+    nextRound.removeChild(nextBtn)    
+}
 
+//Resets the game
+function gameReset () {
+    //Removes any pictures or captions
+    if (playerSelection === "Paper" && computerSelection === "Rock") {
+        document.body.removeChild(dwightPicPlayer);
+        playerChoice.removeChild(dwightCaptionPlayer);
+        document.body.removeChild(theRockPicComputer);
+        compChoice.removeChild(theRockCaptionComputer);
+    }
+    else if (playerSelection === "Paper" && computerSelection === "Scissors") {
+        document.body.removeChild(dwightPicPlayer);
+        playerChoice.removeChild(dwightCaptionPlayer);
+        document.body.removeChild(edwardPicComputer);
+        compChoice.removeChild(edwardCaptionComputer);    
+    }
+    else if (playerSelection === "Scissors" && computerSelection === "Rock") {
+        document.body.removeChild(edwardPicPlayer);
+        playerChoice.removeChild(edwardCaptionPlayer);
+        document.body.removeChild(theRockPicComputer);
+        compChoice.removeChild(theRockCaptionComputer);
+    }
+    else if (playerSelection === "Scissors" && computerSelection === "Paper") {
+        document.body.removeChild(edwardPicPlayer);
+        playerChoice.removeChild(edwardCaptionPlayer);
+        document.body.removeChild(dwightPicComputer);
+        compChoice.removeChild(dwightCaptionComputer);   
+    }
+    else if (playerSelection === "Rock" && computerSelection === "Paper") {
+        document.body.removeChild(theRockPicPlayer);
+        playerChoice.removeChild(theRockCaptionPlayer);
+        document.body.removeChild(dwightPicComputer);
+        compChoice.removeChild(dwightCaptionComputer); 
+    }
+    else if (playerSelection === "Rock" && computerSelection === "Scissors") {
+        document.body.removeChild(theRockPicPlayer);
+        playerChoice.removeChild(theRockCaptionPlayer);
+        document.body.removeChild(edwardPicComputer);
+        compChoice.removeChild(edwardCaptionComputer);    
+    } else {
+        console.log("Game Reset Error 1");
+    }
 
+    //Resets score to 0
+    if (playerScore === 5) {
+        document.body.removeChild(youWin);
+        playerScore = 0;
+        computerScore = 0;
+    } 
+    else if (computerScore === 5) {
+        document.body.removeChild(youLose);
+        playerScore = 0;
+        computerScore = 0;
+    }
+    else {console.log("Game Reset Error 2");
+    }
 
+    //Places pieces back on the board and removes nextRound and playAgain buttons
+    rock.appendChild(rockBtn);
+    paper.appendChild(paperBtn);
+    scissors.appendChild(scissorsBtn);
+    playAgain.removeChild(playAgainBtn);
 
-
-
-
-
-
-
-
-
+    //Updates the score board
+    playerScoreCaption.textContent = "Your Score: " + playerScore;
+    computerScoreCaption.textContent = "Comp Score: " + computerScore;
+}
 
 //*****************************************************************************
 
