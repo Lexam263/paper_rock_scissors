@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="rock_paper_scissors.css">
+    </head>
+    <header>
+        <title>Rock Paper Scissors</title>
+        <meta charset="utf-8"/>
+    </header>
+    <body>
+        <div id="title"></div>
+        <div id="start"></div>
+        <div id="btns"></div>
+        <div id="subtitle"></div>
+        <div id="rules"></div> 
+        <div id="playerChoice"></div>
+        <div id="compChoice"></div>
+        <div id="nextRound"></div>
+        <div id="results"></div>
+        <div id="playerScoreDisplay"></div>
+        <div id="computerScoreDisplay">></div>
+        <div id="playAgain"></div>
+
+       <script>
+//*****************************************************************************
+
+//Variables 
+
+//Player variables
+
+//Displays pictures for the player
+let theRockPicPlayer = document.createElement("IMG");
+    theRockPicPlayer.src = ("theRock.jpeg");
+    theRockPicPlayer.classList.add("playerPicture")
+
+let dwightPicPlayer = document.createElement("IMG");
+    dwightPicPlayer.src = ("dwight.jpg");
+    dwightPicPlayer.classList.add("playerPicture")
+
+let edwardPicPlayer = document.createElement("IMG");
+    edwardPicPlayer.src = ("edward.jpg");
+    edwardPicPlayer.classList.add("playerPicture")
+
+//Displays captions for the player
+let theRockCaptionPlayer = document.createElement("p");
+    theRockCaptionPlayer.classList.add("player");
+    theRockCaptionPlayer.textContent = "You chose The Rock!";
+
+let dwightCaptionPlayer = document.createElement("p");
+    dwightCaptionPlayer.classList.add("player");
+    dwightCaptionPlayer.textContent = "You chose Dwight!";
+
+let edwardCaptionPlayer = document.createElement("p");
+    edwardCaptionPlayer.classList.add("player");
+    edwardCaptionPlayer.textContent = "You chose Edward!";
+
+//Displays Scoreboard for the player
+let playerScoreCaption = document.createElement("p");
+    playerScoreCaption.textContent = "Your Score: " + playerScore;
+    playerScoreCaption.classList.add("playerScoreDisplay");
+    playerScoreDisplay.appendChild(playerScoreCaption);
+    let playerScore = [0];
+    let playerSelection = "";
+
+
+//Computer Variables
+
+//Displays Scoreboard for the computer
+
+let computerScoreCaption = document.createElement("p");
+    computerScoreCaption.textContent = "Comp Score: " + computerScore;
+    computerScoreCaption.classList.add("computerScoreDisplay");
+    computerScoreDisplay.appendChild(computerScoreCaption);
+    let computerScore = [0];
+    let computerSelection = computerChoice();
+
+//Displays pictures for the computer
+let theRockPicComputer = document.createElement("IMG");
+    theRockPicComputer.src = ("theRock.jpeg");
+    theRockPicComputer.classList.add("computerPicture");
+
+let dwightPicComputer = document.createElement("IMG");
+    dwightPicComputer.src = ("dwight.jpg");
+    dwightPicComputer.classList.add("computerPicture");
+
+let edwardPicComputer = document.createElement("IMG");
+    edwardPicComputer.src = ("edward.jpg");
+    edwardPicComputer.classList.add("computerPicture");
+
+//Displays captions for the computer
+let theRockCaptionComputer = document.createElement("p");
+    theRockCaptionComputer.textContent = "The Computer chose The Rock!";
+    theRockCaptionComputer.classList.add("computerCaption");
+
+let dwightCaptionComputer = document.createElement("p");
+    dwightCaptionComputer.textContent = "The Computer chose Dwight!";
+    dwightCaptionComputer.classList.add("computerCaption");
+
+let edwardCaptionComputer = document.createElement("p");
+    edwardCaptionComputer.textContent = "The Computer chose Edward!";
+    edwardCaptionComputer.classList.add("computerCaption");
+
+
+//Game variables
+
+//Title
+let headerOne = document.createElement("h1");
+    headerOne.textContent = "Rock Paper Scissors!";
+    headerOne.classList.add("title");
+    title.appendChild(headerOne);
+
+//Rules
+let subtitle = document.querySelector("#subtitle");
+    let headerTwo = document.createElement("div")
+    headerTwo.classList.add("subtitle");
+    headerTwo.textContent = "Here are the Rules:";
+    subtitle.appendChild(headerTwo);
+
+let rules = document.querySelector("#rules");
+    rules.classList.add("rules");
+    let ruleOne = document.createElement("p");
+        ruleOne.textContent = "First player to reach 5 wins.";
+        rules.appendChild(ruleOne);
+    let ruleTwo = document.createElement("p");
+        ruleTwo.textContent = "Rock beats Scissors";
+        rules.appendChild(ruleTwo);
+    let ruleThree = document.createElement("p");
+        ruleThree.textContent = "Paper beats Rock";
+        rules.appendChild(ruleThree);
+    let ruleFour = document.createElement("p");
+        ruleFour.textContent = "Scissors beats Paper";
+        rules.appendChild(ruleFour);
+
+
+//Buttons
+let btns = document.querySelector("#btns");
+            btns.classList.add("btns");
+
+//Start Button
+let start = document.querySelector("#start");
+    start.classList.add("btns");
+    let startBtn = document.createElement("BUTTON");
+    startBtn.innerHTML = "Let's Play!";
+    startBtn.classList.add("btn");
+    start.appendChild(startBtn);
+    startBtn.addEventListener("click", startGame);
+
+//Rock
+let rock = document.createElement("BUTTON");
+    rock.innerHTML = "Rock";
+    rock.classList.add("btn");
+    rock.id = "rock";
+let theRock = document.querySelector("#rock");
+        theRock.addEventListener("click", () => {
+            return playerSelection = "Rock";
+
+        });
+
+//Paper
+let paper = document.createElement("BUTTON");
+    paper.innerHTML = "Paper";
+    paper.classList.add("btn");
+    paper.id = "paper";
+let dwight = document.querySelector("#paper");
+    dwight.addEventListener("click", () => {
+        return playerSelection = "Paper";
+    });
+
+//Scissors
+let scissors = document.createElement("BUTTON");
+    scissors.innerHTML = "Scissors";
+    scissors.classList.add("btn");
+    scissors.id = "scissors";
+let edward = document.querySelector("#scissors");
+        edward.addEventListener("click", () => {
+        return playerSelection = "Scissors";
+        });
+
+//Next Round
+let nextRound = document.querySelector("#nextRound");
+    nextRound.classList.add("btns");
+    let nextBtn = document.createElement("BUTTON");
+    nextBtn.classList.add("btn");
+    nextBtn.innerHTML = "Next Round!"; 
+
+//Play Again
+let playAgain = document.querySelector("#playAgain");
+    playAgain.classList.add("btns");
+    let playAgainBtn = document.createElement("BUTTON");
+    playAgainBtn.classList.add("btn");
+    playAgainBtn.classList.add("playAgain");
+    playAgainBtn.innerHTML = "Play Again";
+
+
+//Game Results
+let youWin = document.createElement("IMG");
+    youWin.src = ("youWin.gif");
+    youWin.classList.add("results");
+
+let youLose = document.createElement("IMG");
+    youLose.src = ("youLose.gif");
+    youLose.classList.add("results");
+
+let youTie = document.createElement("div");
+    youTie.classList.add("subtitle");
+    youTie.textContent = "Draw!";
+
+let winRound = document.createElement("div");
+    winRound.classList.add("subtitle");
+    winRound.textContent = "You win this round!";
+
+let loseRound = document.createElement("div");
+    loseRound.classList.add("subtitle");
+    loseRound.textContent = "You lose this Round!";
+
+
+//Functions
+
+//Start Game
+function startGame() {
+    //Displays the game pieces
+    btns.appendChild(rock);
+    btns.appendChild(paper);
+    btns.appendChild(scissors);
+    //Removes the start button and the rules
+    start.removeChild(startBtn);
+    subtitle.removeChild(headerTwo);
+    rules.removeChild(ruleOne);
+    rules.removeChild(ruleTwo);
+    rules.removeChild(ruleThree);
+    rules.removeChild(ruleFour);
+}
+
+// Computer picks Rock Paper or Scissors randomly
+function computerChoice() {
+    let rps = ["Rock", "Paper", "Scissors"]
+    return rps[Math.floor(Math.random() * rps.length)];
+}
+
+//Plays the Game
+function theMatch() {
+    //Removes the buttons for Rock, Paper, Scissors
+    btns.removeChild(rock);
+    btns.removeChild(paper);
+    btns.removeChild(scissors);
+    //Displays the next round button
+    nextRound.appendChild(nextBtn);
+
+    if (playerSelection === "Rock" && computerSelection === "Rock") {
+        //Displays pictures and captions
+        document.body.appendChild(theRockPicPlayer);
+        playerChoice.appendChild(theRockCaptionPlayer);
+        document.body.appendChild(theRockPicComputer);
+        compChoice.appendChild(theRockCaptionComputer);
+        //Displays a tie
+        subtitle.appendChild(youTie); 
+    }
+    else if (playerSelection === "Paper" && computerSelection === "Paper") {
+        //Displays pictures and captions
+        document.body.appendChild(dwightPicPlayer);
+        playerChoice.appendChild(dwightCaptionPlayer);
+        document.body.appendChild(dwightPicComputer);
+        compChoice.appendChild(dwightCaptionComputer);
+        //Displays a tie
+        subtitle.appendChild(youTie); 
+    }
+    else if (playerSelection === "Scissors" && computerSelection === "Scissors") {
+        //Displays pictures and captions
+        document.body.appendChild(edwardPicPlayer);
+        playerChoice.appendChild(edwardCaptionPlayer);
+        document.body.appendChild(edwardPicComputer);
+        compChoice.appendChild(edwardCaptionComputer);
+        //Displays a tie
+        subtitle.appendChild(youTie);
+    }
+    else if (playerSelection === "Rock" && computerSelection === "Rock") {
+        
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//*****************************************************************************
+
+        </script>
+    </body>
+</html>

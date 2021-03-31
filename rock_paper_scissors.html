@@ -86,17 +86,17 @@ Keep a score board.
 
 
     //Captions for the computer.
-    let theRockCaptionComputer1 = document.createElement("p")
+    let theRockCaptionComputer1 = document.createElement("p");
         theRockCaptionComputer1.textContent = "The Computer chose The Rock!";
-        theRockCaptionComputer1.classList.add("computerCaption1");
+        theRockCaptionComputer1.classList.add("computerCaption");
 
-    let dwightCaptionComputer1 = document.createElement("p")
+    let dwightCaptionComputer1 = document.createElement("p");
         dwightCaptionComputer1.textContent = "The Computer chose Dwight!";
-        dwightCaptionComputer1.classList.add("computerCaption1")
+        dwightCaptionComputer1.classList.add("computerCaption");
 
-    let edwardCaptionComputer1 = document.createElement("p")
+    let edwardCaptionComputer1 = document.createElement("p");
         edwardCaptionComputer1.textContent = "The Computer chose Edward!";
-        edwardCaptionComputer1.classList.add("computerCaption1")
+        edwardCaptionComputer1.classList.add("computerCaption");
 
     
 
@@ -210,6 +210,7 @@ Keep a score board.
         nextRound.classList.add("btns");
         let nextBtn = document.createElement("BUTTON");
         nextBtn.classList.add("btn");
+        nextBtn.classList.add("nextRound")
         nextBtn.innerHTML = "Next Round!";       
 
         //Dislays the Play again button.

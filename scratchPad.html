@@ -1,38 +1,27 @@
 <!DOCTYPE html>
 <html> 
+    <head>
+        <link rel="stylesheet" href="rock_paper_scissors.css">
+    </head>
     <header>
         <meta charset="utf-8">
         <title>Scratch Pad</title>
     </header>
 <body>
-
-    <div id=nextRound></div>
+    <div id="btns"></div>
+    <div id="rock"></div>
 <script>
 //*****************************************************************************
+let rock = document.createElement("BUTTON");
+            rock.innerHTML = "Rock";
+            rock.classList.add("btn");
+            rock.id = "rock"
 
-let nextRound = document.querySelector("#nextRound");
-        let nextBtn = document.createElement("BUTTON");
-        nextBtn.innerHTML = "Rock";       
-nextRound.appendChild(nextBtn);
-
-
-nextBtn.addEventListener("click", rockButton);
-
-let playerSelection = ""
-
-function rockButton () {
-    return playerSelection = "Rock";
-}
-
-
-let otherBtn = document.createElement("BUTTON");
-        otherBtn.innerHTML = "Other Button";       
-nextRound.appendChild(otherBtn);
-
-otherBtn.addEventListener("click", rockConsole);
-function rockConsole () {
-    console.log(playerSelection)
-}
+btns.appendChild(rock);
+let theRock = document.querySelector("#rock");
+        theRock.addEventListener("click", () => {
+            console.log("The Rock!");
+        });
 
 
 //*****************************************************************************

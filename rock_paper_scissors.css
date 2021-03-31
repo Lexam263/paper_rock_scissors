@@ -89,7 +89,7 @@ font-size: 35px;
     left: -330px;
 }
 
-.computerCaption1  {
+.computerCaption {
     color: #ffffff;
     text-align: center;
     font-size: 40px;
@@ -127,7 +127,9 @@ font-size: 35px;
     font-size: x-large;
 }
 
-.nextround {
+.nextRound {
+    display: flex;
+    position: absolute;
     background-color: rgb(21, 24, 212);
     border: none;
     border-radius: 20px;
@@ -137,11 +139,10 @@ font-size: 35px;
     font-size: 40px;
     font-weight: bold;
     margin-left: 30px;
-
-
+    top: 50%;
 }
 
-.nextround:hover {
+.nextRound:hover {
     transition: 500ms;
     background-color: gold;
     color: black;
