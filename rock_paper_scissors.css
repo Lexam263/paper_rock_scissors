@@ -109,7 +109,7 @@ body {
     left: 5%;
     text-align: center;
     padding-top: 1.5%;
-    font-size: x-large;
+    font-size: 24px;
 }
 
 .computerScoreDisplay {
@@ -122,7 +122,7 @@ body {
     left: 84%;
     text-align: center;
     padding-top: 1.5%;
-    font-size: x-large;
+    font-size: 24px;
 }
 
 .nextRound {
@@ -172,56 +172,396 @@ body {
 
 @media (max-width: 1680px) {
     .title {
-        font-size: 87.5%;
+        font-size: 78.75px;
     }
     .subtitle { 
-        font-size: 87.5%;
+        font-size: 52.5px;
     }
     .rules {
-        font-size: 87.5%;
+        font-size: 30.63px;
     }
     .btn {
-        font-size: 87.5%;
+        font-size: 35px;
     }
     .playerPicture {
-        width: 87.5%;
-        height: 87.5%; 
+        width: 350px;
+        height: 350px; 
     }
-
     .computerPicture {
-        width: 87.5%;
-        height: 87.5%;
+        width: 350px;
+        height:350px;
     }
-    
     .player {
-        font-size: 87.5%;
+        font-size: 35px;
     }
-
     .computerCaption {
-        font-size: 87.5%;
+        font-size: 35px;
     }
-
     .playerScoreDisplay {
-        height: 87.5%;
-        width: 87.5%;
+        font-size: 21px;
+        height: 44px;
+        width: 175px;
     }
-
     .computerScoreDisplay {
-        height: 87.5%;
-        width: 87.5%;
+        font-size: 21px;
+        height: 44px;
+        width: 175px;
     }
-
     .nextRound {
-        font-size: 87.5%;
+        font-size: 35px;
     }
-
     .results {
-        width: 87.5%;
-        height: 87.5%;
+        width: 350px;
+        height: 350px;
     }
     .resultsCaption {
-        width: 87.5%;
-        height: 87.5%;
+        width: 350px;
+        height: 350px;
     }
+}
 
+@media (max-width: 1600) {
+    .title {
+        font-size: 75px;
+    }
+    .subtitle { 
+        font-size: 50px;
+    }
+    .rules {
+        font-size: 29px;
+    }
+    .btn {
+        font-size: 33px;
+    }
+    .playerPicture {
+        width: 332px;
+        height: 332px; 
+    }
+    .computerPicture {
+        width: 332px;
+        height:332px;
+    }
+    .player {
+        font-size: 33px;
+    }
+    .computerCaption {
+        font-size: 33px;
+    }
+    .playerScoreDisplay {
+        font-size: 20px;
+        height: 42px;
+        width: 166px;
+    }
+    .computerScoreDisplay {
+        font-size: 20px;
+        height: 42px;
+        width: 166px;
+    }
+    .nextRound {
+        font-size: 33px;
+    }
+    .results {
+        width: 332px;
+        height: 332px;
+    }
+    .resultsCaption {
+        width: 332px;
+        height: 332px;
+    }
+}
+
+@media (max-width: 1440) {
+    .title {
+        font-size: 68px;
+    }
+    .subtitle { 
+        font-size: 45px;
+    }
+    .rules {
+        font-size: 26px;
+    }
+    .btn {
+        font-size: 30px;
+    }
+    .playerPicture {
+        width: 300px;
+        height: 300px; 
+    }
+    .computerPicture {
+        width: 300px;
+        height:300px;
+    }
+    .player {
+        font-size: 30px;
+    }
+    .computerCaption {
+        font-size: 30px;
+    }
+    .playerScoreDisplay {
+        height: 38px;
+        width: 150px; 
+        font-size: 18px;
+    }
+    .computerScoreDisplay {
+        height: 38px;
+        width: 150px; 
+        font-size: 18px;
+    }
+    .nextRound {
+        font-size: 30px;
+    }
+    .results {
+        width: 300px;
+        height: 300px;
+    }
+    .resultsCaption {
+        width: 300px;
+        height: 300px;
+    }
+}
+
+@media (max-width: 1360) {
+    .title {
+        font-size: 63px;
+    }
+    .subtitle { 
+        font-size: 42px;
+    }
+    .rules {
+        font-size: 25px;
+    }
+    .btn {
+        font-size: 30px;
+    }
+    .playerPicture {
+        width: 280px;
+        height: 280px; 
+    }
+    .computerPicture {
+        width: 280px;
+        height:280px;
+    }
+    .player {
+        font-size: 30px;
+    }
+    .computerCaption {
+        font-size: 30px;
+    }
+    .playerScoreDisplay {
+        height: 35px;
+        width: 140px; 
+        font-size: 17px;
+    }
+    .computerScoreDisplay {
+        height: 35px;
+        width: 140px; 
+        font-size: 17px;
+    }
+    .nextRound {
+        font-size: 30px;
+    }
+    .results {
+        width: 280px;
+        height: 280px;
+    }
+    .resultsCaption {
+        width: 280px;
+        height: 280px;
+    }
+}
+@media (max-width: 1280) {
+    .title {
+        font-size: 60px;
+    }
+    .subtitle { 
+        font-size: 40px;
+    }
+    .rules {
+        font-size: 23px;
+    }
+    .btn {
+        font-size: 28px;
+    }
+    .playerPicture {
+        width: 268px;
+        height: 268px; 
+    }
+    .computerPicture {
+        width: 268px;
+        height:268px;
+    }
+    .player {
+        font-size: 28px;
+    }
+    .computerCaption {
+        font-size: 28px;
+    }
+    .playerScoreDisplay {
+        height: 33px;
+        width: 134px; 
+        font-size: 16px;
+    }
+    .computerScoreDisplay {
+        height: 33px;
+        width: 134px; 
+        font-size: 16px;
+    }
+    .nextRound {
+        font-size: 28px;
+    }
+    .results {
+        width: 268px;
+        height: 268px;
+    }
+    .resultsCaption {
+        width: 268px;
+        height: 268px;
+    }
+}
+@media (max-width: 1024) {
+    .title {
+        font-size: 48px;
+    }
+    .subtitle { 
+        font-size: 32px;
+    }
+    .rules {
+        font-size: 19px;
+    }
+    .btn {
+        font-size: 21px;
+    }
+    .playerPicture {
+        width: 212px;
+        height: 212px; 
+    }
+    .computerPicture {
+        width: 212px;
+        height:212px;
+    }
+    .player {
+        font-size: 21px;
+    }
+    .computerCaption {
+        font-size: 21px;
+    }
+    .playerScoreDisplay {
+        height: 27px;
+        width: 106px; 
+        font-size: 13px;
+    }
+    .computerScoreDisplay {
+        height: 27px;
+        width: 106px; 
+        font-size: 13px;
+    }
+    .nextRound {
+        font-size: 21px;
+    }
+    .results {
+        width: 212px;
+        height: 212px;
+    }
+    .resultsCaption {
+        width: 212px;
+        height: 212px;
+    }
+}
+@media (max-width: 800) {
+    .title {
+        font-size: 38px;
+    }
+    .subtitle { 
+        font-size: 25px;
+    }
+    .rules {
+        font-size: 15px;
+    }
+    .btn {
+        font-size: 17px;
+    }
+    .playerPicture {
+        width: 168px;
+        height: 168px; 
+    }
+    .computerPicture {
+        width: 168px;
+        height:168px;
+    }
+    .player {
+        font-size: 17px;
+    }
+    .computerCaption {
+        font-size: 17px;;
+    }
+    .playerScoreDisplay {
+        height: 21px;
+        width: 84px; 
+        font-size: 10px;
+    }
+    .computerScoreDisplay {
+        height: 21px;
+        width: 84px; 
+        font-size: 10px;
+    }
+    .nextRound {
+        font-size: 17px;
+    }
+    .results {
+        width: 168px;
+        height: 168px;
+    }
+    .resultsCaption {
+        width: 168px;
+        height: 168px;
+    }
+}
+@media (max-width: 640) {
+    .title {
+        font-size: 30px;
+    }
+    .subtitle { 
+        font-size: 20px;
+    }
+    .rules {
+        font-size: 12px;
+    }
+    .btn {
+        font-size: 13px;
+    }
+    .playerPicture {
+        width: 132px;
+        height: 132px; 
+    }
+    .computerPicture {
+        width: 132px;
+        height:132px;
+    }
+    .player {
+        font-size: 13px;
+    }
+    .computerCaption {
+        font-size: 13px;
+    }
+    .playerScoreDisplay {
+        height: 17px;
+        width: 66px; 
+        font-size: 8px;
+    }
+    .computerScoreDisplay {
+        height: 17px;
+        width: 66px; 
+        font-size: 8px;
+    }
+    .nextRound {
+        font-size: 13px;;
+    }
+    .results {
+        width: 132px;
+        height: 132px;
+    }
+    .resultsCaption {
+        width: 132px;
+        height: 132px;
+    }
 }
